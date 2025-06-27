@@ -46,10 +46,29 @@ SELECT * FROM club_member_info;
 ```
 ## Clean data
 ### Inconsistent letter case in full_name
-Eleminate abundant space
+Eleminate excess space
 ```sql
 UPDATE club_member_info_cleaned
 SET full_name = TRIM(full_name);
 ```
+Capitalize names in full_name column
+```sql
+UPDATE club_member_info_cleaned
+SET full_name = UPPER(full_name);
+```
+Result:
+|full_name|
+|---------|
+|ADDIE LUSH|
+|ROCK CRADICK|
+|SYDEL SHARVELL|
+|CONSTANTIN DE LA CRUZ|
+|GAYLOR REDHOLE|
+|WANDA DEL MAR|
+|JOANN KENEALY|
+|JOETE CUDIFF|
+|MENDIE ALEXANDRESCU|
+|FEY KLOSS|
+
 ### Age out of realistic range
 
