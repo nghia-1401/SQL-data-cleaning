@@ -45,10 +45,11 @@ INSERT INTO club_member_info_cleaned
 SELECT * FROM club_member_info;
 ```
 ## Clean data
-### Inconsistent letter case
+### Inconsistent letter case in full_name
 Eleminate abundant space
 ```sql
 UPDATE club_member_info_cleaned
 SET full_name = TRIM(full_name);
 ```
+### Age out of realistic range
 
