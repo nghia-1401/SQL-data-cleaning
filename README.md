@@ -71,4 +71,17 @@ Result:
 |FEY KLOSS|
 
 ### Age out of realistic range
-
+Process the data with age > 100 & age IS NOT NULL
+```sql
+UPDATE club_member_info_cleaned
+SET age = SUBSTR(age, 1, 2)
+WHERE age > 100 AND age != '';
+```
+Replace empty age values with Mean values of age column
+```sql
+UPDATE club_member_info_cleaned 
+SET age = (
+	SELECT ROUND(AVG(age),0) FROM club_member_info_cleaned cmic 
+)
+WHERE age = '';
+```
