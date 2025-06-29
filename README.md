@@ -85,3 +85,29 @@ SET age = (
 )
 WHERE age = '';
 ```
+
+### Process the martial_status 
+Problem: Empty values & Spelling error "divored"
+```sql
+SELECT DISTINCT(martial_status) FROM club_member_info_cleaned cmic
+```
+|martial_status|
+|--------------|
+|married|
+|divorced|
+||
+|single|
+|divored|
+
+Replace empty values with 'Unknown'
+```sql
+UPDATE club_member_info_cleaned 
+SET martial_status = 'Unknown'
+WHERE martial_status = '';
+```
+Replace 'divored' with 'divorced'
+```sql
+UPDATE club_member_info_cleaned
+SET martial_status = 'divorced'
+WHERE martial_status = 'divored';
+```
