@@ -111,3 +111,4 @@ UPDATE club_member_info_cleaned
 SET martial_status = 'divorced'
 WHERE martial_status = 'divored';
 ```
+### Delete duplicates
