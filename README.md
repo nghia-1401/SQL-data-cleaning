@@ -112,3 +112,14 @@ SET martial_status = 'divorced'
 WHERE martial_status = 'divored';
 ```
 ### Delete duplicates
+```sql
+DELETE FROM club_member_info_cleaned  
+WHERE ROWID IN (
+	SELECT cmic.ROWID FROM club_member_info_cleaned cmic 
+	JOIN 
+		(SELECT email, MIN(ROWID) AS min_id FROM club_member_info_cleaned 
+		GROUP BY email) AS cmicc
+	ON cmic.email = cmicc.email 
+	WHERE cmic.ROWID > cmicc.min_id
+);
+```
